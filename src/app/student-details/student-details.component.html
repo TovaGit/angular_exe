@@ -1,0 +1,33 @@
+<div class="card" style="width: 18rem;" *ngIf="dStudent">
+    <form>
+        <div class="mb-3">
+          <label for="Fname" class="form-label">First Name </label>
+          <input type="text" class="form-control" id="Fname" [value]="dStudent.firstName">
+        </div>
+        <div class="mb-3">
+            <label for="Lname" class="form-label">Last Name </label>
+            <input type="text" class="form-control" id="Lname" [value]="dStudent.lastName">
+        </div>
+        <div class="mb-3">
+            <label for="add" class="form-label">Address</label>
+            <input type="text" class="form-control" id="add" [value]="dStudent.adress">
+        </div>
+        <div class="mb-3">
+            <label for="phone" class="form-label">Phone number</label>
+            <input type="text" class="form-control" id="phone" [value]="dStudent.phone">
+        </div>
+        <div class="mb-3">
+            <label for="active" class="form-label">is Active</label>
+            <input type="boolean" class="form-control" id="active" [value]="dStudent.active">
+        </div>
+        <div class="mb-3">
+            <label for="leaveDate" *ngIf="!dStudent.active" class="form-label">leaveDate</label>
+            <input type="text" class="form-control" id="leaveDate" *ngIf="!dStudent.active" [value]="dStudent.leaveDate?.toISOString()?.split('T')?.at(0)">
+        </div>
+        <div class="mb-3">
+            <label for="avg" class="form-label">Grade avg</label>
+            <input type="boolean" class="form-control" id="avg" [value]="dStudent.avg">
+        </div>
+        <button type="submit" class="btn btn-primary" (click)="saveNewStudent()">Submit</button>
+    </form>
+  </div>

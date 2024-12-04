@@ -1,0 +1,21 @@
+<p>students works!</p>
+<table class="table table-striped">
+<thead>
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">First Name</th>
+      <th scope="col">Last Name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let s of students" [ngClass]="{'table-success': s.avg > 90 ,'table-danger': !s.active }">
+      <th scope="row">{{s.id}}</th>
+      <td>{{s.firstName}}</td>
+      <td>{{s.lastName}}</td>
+      <td><button type="button" class="btn btn-outline-primary"(click)="editStudent(s)">edit student</button>      </td>
+      <td><button type="button" class="btn btn-outline-primary"(click)="deletStudent(s.id)">delete student</button>      </td>
+    </tr>
+  </tbody>
+</table>
+<app-students-details  [dStudent]="selectedStudent" (onSaveNewStudent)="addStudent($event)"></app-students-details>
+<button type="button"  class="btn btn-outline-primary" (click)="addNewStudent()">Add student</button> 
